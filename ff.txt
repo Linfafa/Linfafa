@@ -1,77 +1,160 @@
- import java.util.Scanner;
-  
-  public class fuli {
-  
-      /**
-       * @param args
-       */
-      public static void main(String[] args) {
-          // TODO Auto-generated method stub
-         Scanner caculate = new Scanner(System.in);
-         int a = 0;
-         while (a == 0 || a == 1 || a == 2 || a == 3) {
-             System.out.println("ÇëÑ¡Ôñ1/2/3£º\n1.¸´Àû¼ÆËãÖÕÖµ2.¸´Àû¼ÆËã±¾½ğ3.µ¥Àû¼ÆËã±¾Ï¢");
-             int a1 = caculate.nextInt();
-             if (a1 == 1) {
-                 fuli.CFutureValue();
-                 break;
-             } else if (a1 == 2) {
-                 fuli.CPresentValue();
-                 break;
-            }
- 
-             else if (a1 == 3) {
-                fuli.PrincipalAndInterest();
-                 break;
-             } else {
-                 System.out.println("\nÄúµÄÊäÈë´íÎó");
-                 a1 = a;
-             }
-         }
-     }
- 
-     // ¸´Àû¼ÆËãÖÕÖµ
-    static void CFutureValue() {
-       Scanner fuli = new Scanner(System.in);
-         System.out.println("ÇëÊäÈë±¾½ğ£º");
-         double PresentValue = fuli.nextDouble(); // ±¾½ğ
-         System.out.println("ÇëÊäÈë´æ¿îÄêÊı£º");
-         int year = fuli.nextInt(); // ´æÇ®ÄêÊı
-         System.out.println("ÇëÊäÈëÀûÂÊ£º");
-         double r = fuli.nextDouble(); // ÀûÂÊ
-         double sum = 1;
-         for (int i = 1; i <= year; i++) {
-             sum = (1 + r) * sum;         }
-        System.out.println("×Ü¶îÎª£º" + sum * PresentValue);
-     } 
-     // ¸´Àû¼ÆËã±¾½ğ
-     static void CPresentValue() {
- 
-         Scanner fuli = new Scanner(System.in);
-         System.out.println("ÇëÊäÈëÖÕÖµ£º");
-         double sum = fuli.nextDouble(); // ÖÕÖµ
-         System.out.println("ÇëÊäÈë´æ¿îÄêÊı£º");
-         int year = fuli.nextInt(); // ´æÇ®ÄêÊı
-         System.out.println("ÇëÊäÈëÀûÂÊ£º");
-         double r = fuli.nextDouble(); // ÀûÂÊ
-         double PresentValue = 1;
-         for (int i = 1; i <= year; i++) {
-             PresentValue = (1 + r) * PresentValue;
-         }
-         System.out.println("×Ü¶îÎª£º" + sum * (1 / PresentValue));
-     }
- 
-     // µ¥Àû¼ÆËã±¾Ï¢
-    static void PrincipalAndInterest() {
-        Scanner danli = new Scanner(System.in);
-        System.out.println("ÇëÊäÈë±¾½ğ£º");
-         double PresentValue = danli.nextDouble(); // ±¾½ğ
-         System.out.println("ÇëÊäÈë´æ¿îÄêÊı£º");
-         int Annuity = danli.nextInt(); // ´æÇ®ÄêÊı
-         System.out.println("ÇëÊäÈëÀûÂÊ£º");
-         double r = danli.nextDouble(); // ÀûÂÊ
-        double sum1 = 1;
-        sum1 = (1 + r * Annuity) * PresentValue;
-         System.out.println("±¾Ï¢Îª£º" + sum1);
-     }
- 
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.NumberFormat;
+Â 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+/**
+Â * 
+Â *
+Â */
+Â 
+public class InterestÂ  extends JFrame
+{
+private JLabel a1;
+private JLabel a2;
+private JLabel a3;
+private JTextField b1;
+private JTextField b2;
+private JTextField b3;
+private JButton c1;
+private JButton c2;
+private JButton c3;
+private JTextArea text;
+public Interest()
+{
+creatComponents()Â Â  ;
+layoutComponents();
+registerHandlers();
+setTitle("å¤åˆ©å­˜æ¬¾åº”ç”¨ç¨‹åº");
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+pack();
+}
+private voidÂ  creatComponents()
+{
+a1=new JLabel("æœ¬Â  é‡‘ ");
+a1.setFont(new Font("å®‹ä½“",Font.BOLD,18));
+a2=new JLabel("å¹´åˆ©ç‡ ");
+a2.setFont(new Font("å®‹ä½“",Font.BOLD,18));
+a3=new JLabel("å¹´ æ•° ");
+a3.setFont(new Font("å®‹ä½“",Font.BOLD,18));
+Â 
+b1=new JTextField(10);
+b2=new JTextField(10);
+b3=new JTextField(10);
+c1=new JButton("è®¡ç®—");
+c1.setFont(new Font("å®‹ä½“",Font.BOLD,15));
+c3=new JButton("");
+c3.setBackground(Color.GREEN);
+c3.setToolTipText("LOVE YOU FOREVER");
+c3.setBorder(new LineBorder(Color.RED,3));
+c3.setFont(new Font("å®‹ä½“",Font.BOLD,20));
+c3.setForeground(Color.YELLOW);
+c2=new JButton("æ¸…é™¤");
+c2.setFont(new Font("å®‹ä½“",Font.BOLD,15));
+text=new JTextArea();
+}
+private void layoutComponents()
+{
+//Container c=this.getContentPane();Â Â Â 
+setLayout(new FlowLayout());
+JPanel panel1=new JPanel();
+panel1.add(a1);
+panel1.add(b1);
+JPanel panel2=new JPanel();
+panel2.add(a2);
+panel2.add(b2);
+JPanel panel3=new JPanel();
+panel3.add(a3);
+panel3.add(b3);
+JPanel panel4=new JPanel();
+panel4.add(c1);
+panel4.add(c3);
+panel4.add(c2);
+JPanelÂ  leftpanel=new JPanel(new GridLayout(4,1));
+leftpanel.add(panel1);
+leftpanel.add(panel2);
+leftpanel.add(panel3);
+leftpanel.add(panel4);
+JScrollPane panel5=new JScrollPane(text);
+panel5.setPreferredSize(new Dimension(200,150));
+add(leftpanel);
+add(panel5);
+}
+Â privateÂ  void registerHandlers()
+Â {
+Â Â Â Â Â c1ActionEventHander hander1=newÂ  c1ActionEventHander();
+Â Â Â Â Â c1.addActionListener(hander1);
+Â Â Â Â Â c2ActionEventHander hander2=newÂ  c2ActionEventHander();
+Â Â Â Â Â c2.addActionListener(hander2);
+c3ActionEventHander hander3=newÂ  c3ActionEventHander();
+Â Â Â Â c3.addActionListener(hander3);
+Â Â Â Â Â Â 
+Â }
+private class c1ActionEventHander implements ActionListener
+{
+public void actionPerformed(ActionEvent e)
+{
+Â Â Â Â double principal;
+Â Â Â Â double amount;
+Â Â Â Â double rate;
+Â Â Â Â int n;
+Â Â Â Â NumberFormat currencyformatter=NumberFormat.getCurrencyInstance();
+Â Â Â Â String output="å¹´"+"/t"+"å¤åˆ©å­˜æ¬¾"+"/n";
+Â Â Â Â Â int year =1;
+Â Â Â Â Â principal=Double.parseDouble(b1.getText());
+Â Â Â Â Â rate=Double.parseDouble(b2.getText());
+Â Â Â Â Â n=Integer.parseInt(b3.getText());
+Â Â Â Â Â Â while(year<=n)
+Â Â Â Â Â Â {
+Â Â Â Â Â Â Â Â Â Â amount=principal*Math.pow(1+rate,year);
+Â Â Â Â Â Â Â Â Â Â output+=String.valueOf(year)+"\t"+currencyformatter.format(amount)+"\n";
+Â Â Â Â Â Â Â Â Â year=year+1;
+Â Â Â Â Â Â }
+Â Â Â Â Â text.setText(output);
+}
+}
+private classÂ  c2ActionEventHander implements ActionListener
+{
+public void actionPerformed(ActionEvent e)
+{
+Â Â Â Â b1.setText("");
+Â Â Â Â b2.setText("");
+Â Â Â Â b3.setText("");
+Â Â Â Â text.setText("");
+}
+}
+private class c3ActionEventHander implements ActionListener
+{
+public void actionPerformed(ActionEvent e)
+{
+Â Â Â Â b1.setText("");
+Â Â Â Â b2.setText("");
+Â Â Â Â b3.setText("");
+}
+}
+public static void main(String[] args)
+{
+Â Â Â Â Â Interest frame=new Interest();
+Â Â Â Â frame.setVisible(true);
+Â Â Â Â frame.setSize(450,200);
+Â Â frame.setResizable(false);
+}
+}
